@@ -1,0 +1,411 @@
+﻿
+#region ChatGpt
+
+#region Covariance and Contravariance Generics
+
+#region Covariance
+
+// class Animal { }
+// class Dog : Animal { }
+//
+// public interface ICovariant<out T>
+// {
+//     T Get();
+// }
+//
+// public class CovariantExample : ICovariant<Dog>
+// {
+//     public Dog Get() => new Dog();
+// }
+//
+// class Program
+// {
+//     static void Main()
+//     {
+//         // Covariant interface allows ICovariant<Dog> to be assigned to ICovariant<Animal>
+//         ICovariant<Animal> animalCovariant = new CovariantExample();
+//         Animal animal = animalCovariant.Get(); // Works, returns a Dog as Animal
+//     }
+// }
+
+#endregion
+
+#region Contravariance
+
+// public class Animal { }
+// public class Dog : Animal { }
+//
+// public interface IContravariant<in T>
+// {
+//     void Set(T value);
+// }
+//
+// public class ContravariantExample : IContravariant<Animal>
+// {
+//     public void Set(Animal value)
+//     {
+//         Console.WriteLine("Animal set.");
+//     }
+// }
+//
+// class Program
+// {
+//     static void Main()
+//     {
+//         // Contravariant interface allows IContravariant<Animal> to be assigned to IContravariant<Dog>
+//         IContravariant<Dog> dogContravariant = new ContravariantExample();
+//         dogContravariant.Set(new Dog());  // Works
+//     }
+// }
+
+#endregion
+
+#endregion
+
+#region Generics
+
+// public class Stack<T>
+// {
+//     private List<T> _elements = new List<T>();
+//
+//     public void Push(T item)
+//     {
+//         _elements.Add(item);
+//         Console.WriteLine($"{item} added to stack.");
+//     }
+//
+//     public T Pop()
+//     {
+//         if (_elements.Count == 0)
+//         {
+//             throw new InvalidOperationException("Stack is empty!");
+//         }
+//
+//         T item = _elements[_elements.Count - 1];
+//         _elements.RemoveAt(_elements.Count - 1);
+//         return item;
+//     }
+// }
+//
+// class Program
+// {
+//     static void Main()
+//     {
+//         Stack<int> intStack = new Stack<int>();
+//         intStack.Push(10);
+//         intStack.Push(20);
+//         Console.WriteLine($"Popped: {intStack.Pop()}"); // Output: 20
+//
+//         Stack<string> stringStack = new Stack<string>();
+//         stringStack.Push("Hello");
+//         stringStack.Push("World");
+//         Console.WriteLine($"Popped: {stringStack.Pop()}"); // Output: World
+//     }
+// }
+
+#endregion
+
+#region Online Shopping System. Encapsulation, Inheritance, Method Overloading, Method Overriding, Polymorphism, Interfaces 
+
+// using System;
+//
+// public interface IPurchasable
+// {
+//     // Interface defining a method that all purchasable items must implement
+//     void Purchase();
+// }
+//
+// public class Product : IPurchasable
+// {
+//     // Encapsulation using properties
+//     public string Name { get; set; }
+//     public decimal Price { get; set; }
+//     
+//     public Product(string name, decimal price)
+//     {
+//         Name = name;
+//         Price = price;
+//     }
+//
+//     // Virtual method for overriding in derived classes
+//     public virtual void DisplayInfo()
+//     {
+//         Console.WriteLine($"Product: {Name}, Price: {Price:C}");
+//     }
+//
+//     // Method Overloading: Calculating discount
+//     public decimal CalculateDiscount(decimal discountPercentage)
+//     {
+//         return Price - (Price * discountPercentage / 100);
+//     }
+//
+//     // Overloaded version: Fixed discount amount
+//     public decimal CalculateDiscount(decimal discountPercentage, decimal fixedDiscount)
+//     {
+//         return Price - (Price * discountPercentage / 100) - fixedDiscount;
+//     }
+//
+//     // Implementing the IPurchasable interface
+//     public void Purchase()
+//     {
+//         Console.WriteLine($"Purchasing {Name} for {Price:C}");
+//     }
+// }
+//
+// // Derived class: Book
+// public class Book : Product
+// {
+//     public string Author { get; set; }
+//
+//     public Book(string name, decimal price, string author) : base(name, price)
+//     {
+//         Author = author;
+//     }
+//
+//     // Overriding the DisplayInfo method to add additional behavior
+//     public override void DisplayInfo()
+//     {
+//         Console.WriteLine($"Book: {Name} by {Author}, Price: {Price:C}");
+//     }
+// }
+//
+// // Derived class: Electronics
+// public class Electronics : Product
+// {
+//     public string Brand { get; set; }
+//
+//     public Electronics(string name, decimal price, string brand) : base(name, price)
+//     {
+//         Brand = brand;
+//     }
+//
+//     // Overriding the DisplayInfo method to add additional behavior
+//     public override void DisplayInfo()
+//     {
+//         Console.WriteLine($"Electronics: {Name}, Brand: {Brand}, Price: {Price:C}");
+//     }
+// }
+//
+// // Program to bring it all together
+// class Program
+// {
+//     static void Main()
+//     {
+//         // Using Polymorphism: Treating different product types as Product
+//         Product[] products = new Product[]
+//         {
+//             new Book("C# Programming", 25.50m, "John Doe"),
+//             new Electronics("Smartphone", 299.99m, "TechCorp")
+//         };
+//
+//         // Displaying product info (method overriding in action)
+//         foreach (Product product in products)
+//         {
+//             product.DisplayInfo();
+//         }
+//
+//         // Applying discounts using method overloading
+//         Console.WriteLine("\nApplying Discounts:");
+//         Console.WriteLine($"Discounted price for {products[0].Name}: {products[0].CalculateDiscount(10):C}");
+//         Console.WriteLine($"Discounted price for {products[1].Name}: {products[1].CalculateDiscount(5, 20):C}");
+//
+//         // Purchasing items using the interface method
+//         Console.WriteLine("\nPurchasing Items:");
+//         foreach (IPurchasable purchasable in products)
+//         {
+//             purchasable.Purchase();
+//         }
+//     }
+// }
+
+#endregion
+
+#region Encapsulation
+
+// public class Person
+// {
+//     // Field
+//     private string _name;
+//
+//     // Property to encapsulate the field
+//     public string Name
+//     {
+//         get { return _name; } // Getter to retrieve the value
+//         set 
+//         { 
+//             if (value != null && value.Length > 1 && string.IsNullOrEmpty(_name))
+//             {
+//                 _name = value; // Setter to set the value
+//             }
+//         }
+//     }
+//
+//     // Property with automatic getter and setter
+//     public int Age { get; set; } // C# auto-property
+// }
+//
+// class Program
+// {
+//     static void Main()
+//     {
+//         Person person = new Person();
+//
+//         // Setting values using properties
+//         person.Name = "John"; // Using the setter
+//         person.Age = 30;      // Using the auto-property
+//         person.Name = "Arsalan";
+//
+//         // Getting values using properties
+//         Console.WriteLine(person.Name); // Using the getter, Output: John
+//         Console.WriteLine(person.Age);  // Output: 30
+//     }
+// }
+
+#endregion
+
+#region Simple Polymorphism
+
+// public class Animal
+// {
+//     public virtual void MakeSound()
+//     {
+//         Console.WriteLine("Some generic animal sound");
+//     }
+// }
+//
+// public class Dog : Animal
+// {
+//     public override void MakeSound()
+//     {
+//         Console.WriteLine("Bark!");
+//     }
+// }
+//
+// public class Cat : Animal
+// {
+//     public override void MakeSound()
+//     {
+//         Console.WriteLine("Meow!");
+//     }
+// }
+//
+// public class Bird : Animal
+// {
+//     public override void MakeSound()
+//     {
+//         Console.WriteLine("Tweet!");
+//     }
+// }
+//
+// class Program
+// {
+//     static void Main()
+//     {
+//         // Using the base class reference for polymorphism
+//         Animal[] animals = new Animal[]
+//         {
+//             new Dog(),
+//             new Cat(),
+//             new Bird()
+//         };
+//
+//         // We can loop through the animals array and treat them the same way
+//         foreach (Animal animal in animals)
+//         {
+//             animal.MakeSound();
+//         }
+//     }
+// }
+
+#endregion
+
+#region Simple delegate.
+//
+// // 1. Define a delegate
+// public delegate void PrintMessage(string message);
+//
+// // 2. Define a method that matches the delegate signature
+// public class Messenger
+// {
+//     public static void PrintToConsole(string message)
+//     {
+//         Console.WriteLine("Console: " + message);
+//     }
+//
+//     public static void PrintToFile(string message)
+//     {
+//         // Simulate writing to a file
+//         Console.WriteLine("File: " + message);
+//     }
+// }
+//
+// // 3. Use the delegate
+// class Program
+// {
+//     static void Main(string[] args)
+//     {
+//
+//         #region MultiCast Delegates
+//
+//         // Create an instance of the delegate
+//         PrintMessage print = Messenger.PrintToConsole;
+//         
+//         print += Messenger.PrintToFile;
+//         
+//         // Invoke the delegate
+//         print("Hello, Multi-cast Delegates!");
+//
+//         #endregion
+//
+//         #region Delegates With Anonymous Methods.
+//
+//         PrintMessage printAnonymous = delegate(string message)
+//             {
+//                 Console.WriteLine("Anonymous method: " + message);
+//             };
+//         printAnonymous("Hello from Anonymous Method!");
+//
+//         
+//         
+//         printAnonymous = (msg) => Console.WriteLine("Lambda: " + msg); // Using a lambda expression
+//         printAnonymous("Hello from Lambda!");
+//
+//         #endregion
+//     }
+// }
+
+#endregion
+
+#region Delegate as a parameter (Callback Example)
+
+// using System;
+//
+// public delegate void Notify(string message); // Define a delegate
+//
+// public class Worker
+// {
+//     public void DoWork(Notify notifyDelegate)
+//     {
+//         // Simulate some work
+//         Console.WriteLine("Working...");
+//
+//         // Call the delegate to notify when work is done
+//         notifyDelegate("Work is complete!");
+//     }
+// }
+//
+// class Program
+// {
+//     static void Main()
+//     {
+//         Worker worker = new Worker();
+//
+//         // Pass a delegate (using a lambda) to the method
+//         // worker.DoWork(message => Console.WriteLine(message));
+//         worker.DoWork(message => Console.WriteLine(message));
+//     }
+// }
+
+#endregion
+
+#endregion
