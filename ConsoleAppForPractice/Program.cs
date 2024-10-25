@@ -1,2 +1,3 @@
-﻿namespace ConsoleAppForPractice;
+using ConsoleAppForPractice;
 
+Console.WriteLine("");
